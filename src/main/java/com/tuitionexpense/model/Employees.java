@@ -32,6 +32,8 @@ public class Employees {
 	private Date dob;
 	@Column(name = "marital_status")
 	private String maritalStatus;
+	@Column(name = "manager_id")
+	private int managerID;
 	
 	
 	
@@ -56,7 +58,7 @@ public class Employees {
 	}
 
 
-	public long getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 

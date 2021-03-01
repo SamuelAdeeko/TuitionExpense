@@ -1,10 +1,12 @@
 package com.tuitionexpense.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity     // marks this class as an entity, meaning that we intend to map this class to a table
@@ -23,13 +25,19 @@ public class Expense {
 	
 	private int expenseId;
 	@Column(name = "employee_id")
-	private long employeeId;
+	/*
+	 * The @JoinColumn allows us to specify that this field represents a foreign
+	 * key.
+	 */
+	@JoinColumn
+	
+	private int EmployeeId;
 	@Column(name = "expense_image")
 	private String expenseImage;
 	@Column(name = "status")
 	private String status;
 	@Column(name = "submission_date")
-	private LocalDate submissionDate;
+	private Date submissionDate;
 	@Column(name = "details")
 	private String details;
 	@Column(name = "comments")
@@ -43,38 +51,12 @@ public class Expense {
 		super();
 		
 	}
-	
-	
 
-	public Expense(String status, String details, long amount) {
-		super();
-		this.status = status;
-		this.details = details;
-		this.amount = amount;
-	}
-
-
-
-	public Expense(long employeeId, String expenseImage, String status, LocalDate submissionDate, String details,
-			String comments, long amount, String authorizedBy) {
-		super();
-		this.employeeId = employeeId;
-		this.expenseImage = expenseImage;
-		this.status = status;
-		this.submissionDate = submissionDate;
-		this.details = details;
-		this.comments = comments;
-		this.amount = amount;
-		this.authorizedBy = authorizedBy;
-	}
-
-
-
-	public Expense(int expenseId, long employeeId, String expenseImage, String status, LocalDate submissionDate,
+	public Expense(int expenseId, int employeeId, String expenseImage, String status, Date submissionDate,
 			String details, String comments, long amount, String authorizedBy) {
 		super();
 		this.expenseId = expenseId;
-		this.employeeId = employeeId;
+		EmployeeId = employeeId;
 		this.expenseImage = expenseImage;
 		this.status = status;
 		this.submissionDate = submissionDate;
@@ -83,123 +65,152 @@ public class Expense {
 		this.amount = amount;
 		this.authorizedBy = authorizedBy;
 	}
-
-
 
 	public int getExpenseId() {
 		return expenseId;
 	}
 
-
-
 	public void setExpenseId(int expenseId) {
 		this.expenseId = expenseId;
 	}
 
-
-
-	public long getEmployeeId() {
-		return employeeId;
+	public int getEmployeeId() {
+		return EmployeeId;
 	}
 
-
-
-	public void setEmployeeId(long employeeId) {
-		this.employeeId = employeeId;
+	public void setEmployeeId(int employeeId) {
+		EmployeeId = employeeId;
 	}
-
-
 
 	public String getExpenseImage() {
 		return expenseImage;
 	}
 
-
-
 	public void setExpenseImage(String expenseImage) {
 		this.expenseImage = expenseImage;
 	}
-
-
 
 	public String getStatus() {
 		return status;
 	}
 
-
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-
-
-	public LocalDate getSubmissionDate() {
+	public Date getSubmissionDate() {
 		return submissionDate;
 	}
 
-
-
-	public void setSubmissionDate(LocalDate submissionDate) {
+	public void setSubmissionDate(Date submissionDate) {
 		this.submissionDate = submissionDate;
 	}
-
-
 
 	public String getDetails() {
 		return details;
 	}
 
-
-
 	public void setDetails(String details) {
 		this.details = details;
 	}
-
-
 
 	public String getComments() {
 		return comments;
 	}
 
-
-
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
-
-
 
 	public long getAmount() {
 		return amount;
 	}
 
-
-
 	public void setAmount(long amount) {
 		this.amount = amount;
 	}
-
-
 
 	public String getAuthorizedBy() {
 		return authorizedBy;
 	}
 
-
-
 	public void setAuthorizedBy(String authorizedBy) {
 		this.authorizedBy = authorizedBy;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + EmployeeId;
+		result = prime * result + (int) (amount ^ (amount >>> 32));
+		result = prime * result + ((authorizedBy == null) ? 0 : authorizedBy.hashCode());
+		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
+		result = prime * result + ((details == null) ? 0 : details.hashCode());
+		result = prime * result + expenseId;
+		result = prime * result + ((expenseImage == null) ? 0 : expenseImage.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((submissionDate == null) ? 0 : submissionDate.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Expense other = (Expense) obj;
+		if (EmployeeId != other.EmployeeId)
+			return false;
+		if (amount != other.amount)
+			return false;
+		if (authorizedBy == null) {
+			if (other.authorizedBy != null)
+				return false;
+		} else if (!authorizedBy.equals(other.authorizedBy))
+			return false;
+		if (comments == null) {
+			if (other.comments != null)
+				return false;
+		} else if (!comments.equals(other.comments))
+			return false;
+		if (details == null) {
+			if (other.details != null)
+				return false;
+		} else if (!details.equals(other.details))
+			return false;
+		if (expenseId != other.expenseId)
+			return false;
+		if (expenseImage == null) {
+			if (other.expenseImage != null)
+				return false;
+		} else if (!expenseImage.equals(other.expenseImage))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (submissionDate == null) {
+			if (other.submissionDate != null)
+				return false;
+		} else if (!submissionDate.equals(other.submissionDate))
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {
-		return "Expenses [expenseId=" + expenseId + ", employeeId=" + employeeId + ", expenseImage=" + expenseImage
+		return "Expense [expenseId=" + expenseId + ", EmployeeId=" + EmployeeId + ", expenseImage=" + expenseImage
 				+ ", status=" + status + ", submissionDate=" + submissionDate + ", details=" + details + ", comments="
 				+ comments + ", amount=" + amount + ", authorizedBy=" + authorizedBy + "]";
 	}
+
+	
+
 
 
 

@@ -1,6 +1,5 @@
 package com.tuitionexpense.repository;
 
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,13 +7,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
 import com.tuitionexpense.model.Employees;
 import com.tuitionexpense.model.Expense;
 import com.tuitionexpense.util.HibernateSessionFactory;
 
 public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 
-	PreparedStatement preparedStatement = null;
 
 	@Override
 	public List<Employees> viewAllEmployees() {
@@ -22,12 +21,11 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 		Session s = null;
 		Transaction tx = null;
 		
-		
-		
 		try {
 			s = HibernateSessionFactory.getSession();
 			tx = s.beginTransaction();
 			employee = s.createQuery("FROM Employees", Employees.class).getResultList();
+		
 			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -35,29 +33,7 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 		} finally {
 			s.close();
 		}
-//		Employees employee = null;
-//		
-//		try (Connection connection = PostgresqlConnection.getConnection()){
-//			final String sql = "SELECT email, password FROM expenses.employees WHERE email = ? AND password = ?";
-//			preparedStatement = connection.prepareStatement(sql);
-//			preparedStatement.setString(1, "email");
-//			preparedStatement.setString(2, "password");
-//			ResultSet resultSet = preparedStatement.executeQuery();
-//			if(resultSet.next()) {
-//		//		employee = new Employees();
-//		//		employee.setEmployeeId(resultSet.getLong("employeeId"));
-//				employee.setEmail(resultSet.getString("email"));
-//				employee.setPassword(resultSet.getString("password"));
-////				employee.setPosition(resultSet.getString("position"));
-////				employee.setFirstName(resultSet.getString("first_name"));
-////				employee.setLastName(resultSet.getString("last_name"));
-////				employee.setDob(resultSet.getDate("dob").toLocalDate());
-//				
-//			}
-//			
-//		} catch (ClassNotFoundException | SQLException e) {
-//			e.printStackTrace();
-//		}
+
 		return employee;
 		
 	}
@@ -89,15 +65,55 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 	}
 
 	@Override
-	public List<Expense> viewPendingReimbursement(String userEmail) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Expense> viewPendingReimbursement(int employeeId) {
+		List<Expense> expense = new ArrayList<>();
+		
+		Session s = null;
+		Transaction tx = null;
+		
+//		String hql = "FROM Expense status WHERE status.id = pending";
+//		Query query = session.createQuery(hql);
+//		List results = query.list();
+		
+//		rList = s.createQuery("FROM Reimbursement WHERE employeeId = :employeeId
+//		AND status = 'pending'", Reimbursement.class).setParameter("employeeId", employeeId).getResultList();
+//		
+		try {
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+			expense = s.createQuery("FROM Expense WHERE employee_id = :employeeId AND status = 'pending'", Expense.class).setParameter("employeeId", employeeId).getResultList();
+		
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			s.close();
+		}
+		return expense;
 	}
 
 	@Override
-	public List<Expense> viewResolvedReimbursement(String userEmail) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Expense> viewResolvedReimbursement(int employeeId) {
+		List<Expense> resolvedExpense = new ArrayList<>();
+		
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+			resolvedExpense = s.createQuery("FROM Expense WHERE employee_id = :employeeId AND status = 'approved'", Expense.class).setParameter("employeeId", employeeId).getResultList();
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			s.close();
+		}
+		
+		
+		return resolvedExpense;
 	}
 
 	@Override
@@ -122,9 +138,33 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 	}
 
 	@Override
-	public int updatePersonalInformation(String userEmail, String maritalStatus) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void updatePersonalInformation(int employeeId, String maritalStatus) {
+		
+	//	Employees employee = null;
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			// get connection session
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+			Employees employee = s.load(Employees.class, employeeId);
+			employee.setMaritalStatus(maritalStatus);
+			s.update(employee);
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+			
+		} finally {
+			s.close();
+		}
+//		Employee employee = s.load(Employee.class, employeeId);
+//		log.info(employee);
+//		employee.setPhone(phone);
+//		s.update(employee);
+		
+	
 	}
 
 	@Override
@@ -239,6 +279,13 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 //			e.printStackTrace();
 //		}
 //		return c;
+	}
+
+	@Override
+	public void getEmployeeId(String email, String password) {
+		
+		
+		
 	}
 
 }

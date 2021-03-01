@@ -39,4 +39,12 @@
   	<filter-name>AuthenticationFilter</filter-name>
   	<url-pattern>/pages/*</url-pattern>
   </filter-mapping>
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/404.html</location>
+  </error-page>
+  <session-config>
+  	<session-timeout>20</session-timeout>
+  </session-config>
+  
 </web-app>

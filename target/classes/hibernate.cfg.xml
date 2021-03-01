@@ -37,7 +37,7 @@
 		<mapping class = "com.tuitionexpense.model.Employees"/>
 	<!--  	<mapping class = "com.tuitionexpense.model.Card"/>  -->
 		<mapping class = "com.tuitionexpense.model.Expense"/>
-	<!--  	<mapping class = "com.tuitionexpense.model.Expenses"/>   -->
+		<mapping class = "com.tuitionexpense.model.Manager"/> 
 		
     </session-factory>
  </hibernate-configuration>

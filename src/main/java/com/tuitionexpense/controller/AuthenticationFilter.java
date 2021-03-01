@@ -37,18 +37,22 @@ public class AuthenticationFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
+		
 		// place your code here
-		
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		
-		HttpSession session = httpRequest.getSession(false);
-		
-		if(session == null) {
-			RequestDispatcher dispatcher =  httpRequest.getRequestDispatcher("./index.html");
-			dispatcher.forward(httpRequest, httpResponse);
-		}
+		// we only want a client to be able to access resources in the pages folder only if they have a session.
+		// we need to downcast to HttpServletRequest in order to get a session
+//		
+//		HttpServletRequest httpRequest = (HttpServletRequest) request;
+//		HttpServletResponse httpResponse = (HttpServletResponse) response;
+//		
+//		// Remember that if we call the getSession without initializing it to false, clients will get a session
+//		HttpSession session = httpRequest.getSession(false);
+//		
+//		if(session == null) {			
+////			httpResponse.sendRedirect("/TuitionExpense/index.html");
+//	//		RequestDispatcher dispatcher =  httpRequest.getRequestDispatcher("./index.html");
+//	//		dispatcher.forward(httpRequest, httpResponse);
+//		}
 		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

@@ -10,12 +10,14 @@ public interface ExpenseWebsiteRepository {
 	// testing employees login out with return object
 	public List<Employees> viewAllEmployees();
 	public void submitReimbursementRequest(Expense request);
-	public List<Expense> viewPendingReimbursement(String userEmail);
-	public List<Expense> viewResolvedReimbursement(String userEmail);
+	public List<Expense> viewPendingReimbursement(int employeeId);
+	public List<Expense> viewResolvedReimbursement(int employeeId);
 	public Employees viewPersonalInformation(int id);
-	public int updatePersonalInformation(String userEmail, String maritalStatus);
+	public void updatePersonalInformation(int employeeId, String maritalStatus);
 	public String sendNotificationEmail(String email);
 	public void createEmployee(Employees employee);
+	public void getEmployeeId(String email, String password);
+	
 	
 
 }

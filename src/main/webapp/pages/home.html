@@ -3,8 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome home!</title>
+<link rel="stylesheet" href="../css/homeEmp.css"></link>
+</head>
 </head>
 <body>
 <h1>Welcome back,user!</h1>
+<div>
+
+<h4> Fill Out And Submit Tuition Expense Reimbursement Form</h4>
+
+
+</div>
+<form action="/TuitionExpense/dispatcher/expense/new" method ="post">
+	
+	
+	<div class = "container">
+		<label for = "amount"><b>Amount</b> </label>
+		<input type = "number" placeholder = "Enter amount" name = "amount" required>
+	<!--   
+		<label for = "expenseImage"><b>Upload an Image</b></label>
+		<input type ="image"  name = "image" >
+-->
+		<label for = "details"><b>Details</b></label>
+		<input type ="text" placeholder="details in 200 words max." name = "details"  >
+		
+		<button type= "submit">Submit</button>
+		
+	</div>
+	
+</form>
 </body>
 </html>

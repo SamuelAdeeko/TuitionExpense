@@ -1,7 +1,11 @@
 package com.tuitionexpense.main;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import com.tuitionexpense.model.Employees;
+import com.tuitionexpense.model.Expense;
 import com.tuitionexpense.service.ExpenseWebsiteServices;
-import com.tuitionexpense.util.HibernateSessionFactory;
 
 public class EmployeeDriver {
 
@@ -21,7 +25,7 @@ public class EmployeeDriver {
 //	//	else {
 //	//		System.out.println("Login error");
 //	//	}
-//		//Employees employee = new Employees(1, "user2@yahoo.com", "user2", "employee" ,"collins", "peter", LocalDate.parse("1977-06-06"));
+	//	Employees employee = new Employees(5, "user2@yahoo.com", "user2", "employee" ,"collins", "peter", new Date(67677777777), "married");
 //		//expenseRepo.createEmployee(employee);
 //		
 //		
@@ -32,9 +36,9 @@ public class EmployeeDriver {
 	//	HibernateSessionFactory.getSession();
 		
 	//	ExpenseWebsiteServices expenseServices = new ExpenseWebsiteServices();
-		
-	//	Expense newExpense = new Expense(1, 3, "yti2.path.url2", "pending", LocalDate.now(), "eXpenses2 from hibernate", "", 700, "");
-//		expenseServices.submitReimbursementRequest(newExpense);
+//		Employees employee = new Employees(5, "user3@gmail.com", "user3", "staff", "jacob", "moses", new java.sql.Date(888877656), "married");
+//		Expense newExpense = new Expense(104, employee, "yti2.path.url2", "pending", LocalDate.now(), "eXpenses2 from hibernate", "", 700, "");
+//		expenseRepo.submitReimbursementRequest(newExpense);
 		
 	//	Employees newEmployee = new Employees(8, "hiber@gmail.com", "passwrod", "manager", "Joe", "doe", LocalDate.now(), "single", "finance");
 	//	expenseServices.createEmployee(newEmployee);
@@ -43,5 +47,10 @@ public class EmployeeDriver {
 		
 		// printing a list of all employees to the console
 	//	System.out.println(expenseRepo.viewAllEmployee());
+		
+	//	System.out.println(expenseRepo.viewEmployeePendingExpense(1));
+	//	System.out.println(expenseRepo.viewAllEmployee());
+	//	System.out.println(expenseRepo.viewResolvedReimbursement());
+	//	expenseRepo.updateMaritalStatus("married");
 	}
 }
