@@ -43,8 +43,9 @@ public class Employees {
 	}
 
 
+
 	public Employees(int employeeId, String email, String password, String position, String firstName, String lastName,
-			Date dob, String maritalStatus) {
+			Date dob, String maritalStatus, int managerID) {
 		super();
 		this.employeeId = employeeId;
 		this.email = email;
@@ -54,8 +55,9 @@ public class Employees {
 		this.lastName = lastName;
 		this.dob = dob;
 		this.maritalStatus = maritalStatus;
-		
+		this.managerID = managerID;
 	}
+
 
 
 	public int getEmployeeId() {
@@ -63,9 +65,11 @@ public class Employees {
 	}
 
 
+
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
+
 
 
 	public String getEmail() {
@@ -73,9 +77,11 @@ public class Employees {
 	}
 
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 
 	public String getPassword() {
@@ -83,9 +89,11 @@ public class Employees {
 	}
 
 
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 
 
 	public String getPosition() {
@@ -93,9 +101,11 @@ public class Employees {
 	}
 
 
+
 	public void setPosition(String position) {
 		this.position = position;
 	}
+
 
 
 	public String getFirstName() {
@@ -103,9 +113,11 @@ public class Employees {
 	}
 
 
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 
 
 	public String getLastName() {
@@ -113,9 +125,11 @@ public class Employees {
 	}
 
 
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 
 
 	public Date getDob() {
@@ -123,9 +137,11 @@ public class Employees {
 	}
 
 
+
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+
 
 
 	public String getMaritalStatus() {
@@ -133,12 +149,23 @@ public class Employees {
 	}
 
 
+
 	public void setMaritalStatus(String maritalStatus) {
 		this.maritalStatus = maritalStatus;
 	}
 
 
-	
+
+	public int getManagerID() {
+		return managerID;
+	}
+
+
+
+	public void setManagerID(int managerID) {
+		this.managerID = managerID;
+	}
+
 
 
 	@Override
@@ -150,11 +177,13 @@ public class Employees {
 		result = prime * result + employeeId;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + managerID;
 		result = prime * result + ((maritalStatus == null) ? 0 : maritalStatus.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((position == null) ? 0 : position.hashCode());
 		return result;
 	}
+
 
 
 	@Override
@@ -188,6 +217,8 @@ public class Employees {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
+		if (managerID != other.managerID)
+			return false;
 		if (maritalStatus == null) {
 			if (other.maritalStatus != null)
 				return false;
@@ -207,13 +238,16 @@ public class Employees {
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Employees [employeeId=" + employeeId + ", email=" + email + ", password=" + password + ", position="
 				+ position + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", maritalStatus="
-				+ maritalStatus + "]";
+				+ maritalStatus + ", managerID=" + managerID + "]";
 	}
 
+
+	
 
 	
 

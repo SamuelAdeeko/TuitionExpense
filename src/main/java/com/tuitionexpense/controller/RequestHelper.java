@@ -1,18 +1,14 @@
 package com.tuitionexpense.controller;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tuitionexpense.model.Employees;
 import com.tuitionexpense.model.Expense;
 import com.tuitionexpense.service.ExpenseWebsiteManagerService;
 import com.tuitionexpense.service.ExpenseWebsiteServices;
@@ -58,18 +54,18 @@ public class RequestHelper {
 			session.invalidate();
 			}
 			response.getWriter().write("Your session has been terminated");
+			response.setStatus(200);
 			break;
 		
 		case "/dispatcher/employee/info":
-		
-		//	 Employees employeeInfo = new Employees();
-		//	 final int ID = Integer.parseInt(request.getParameter("id"));
-		//	 employeeInfo = this.expenseServices.viewPersonalInformation(ID);
-			 
+			
+			final int EMPLOYEEID2 = Integer.parseInt(request.getParameter("employeeId"));
+			
 			ObjectMapper obj = new ObjectMapper();
-			String json = obj.writeValueAsString(this.expenseServices.viewPersonalInformation());
+			String json = obj.writeValueAsString(this.expenseServices.viewPersonalInformation(EMPLOYEEID2));
 			System.out.println(json);
 			response.getWriter().write(json);
+			response.setStatus(200);
 		 	break;
 		 	
 		 case "/dispatcher/employees/all":
@@ -80,23 +76,24 @@ public class RequestHelper {
 			 System.out.println(json1);
 			 response.getWriter().write(json1);
 			 response.setStatus(200);
-			 response.getWriter().write("Hello and welcome to the dispatcher tool");
 			 break;
 		 
 		 case "/dispatcher/Expense/pending/view":
-			 
+			 final int EMPLOYEEID1 = Integer.parseInt(request.getParameter("employeeId"));
+			 System.out.println(EMPLOYEEID1);
 			 ObjectMapper obj2 = new ObjectMapper();
-			 final String JSON2 = obj2.writeValueAsString(this.expenseServices.viewEmployeePendingExpense());
+			 final String JSON2 = obj2.writeValueAsString(this.expenseServices.viewEmployeePendingExpense(EMPLOYEEID1));
 			 System.out.println(JSON2);
 			 response.getWriter().write(JSON2);
-			 response.getWriter().write("Welcome to home page");
+			 response.setStatus(200);
 			 break;
 			 
 		 case "/dispatcher/Expense/solved/view":
-			 
+			 final int EMPLOYEEID = Integer.parseInt(request.getParameter("employeeId"));
 			 ObjectMapper obj3 = new ObjectMapper();
-			 final String JSON3 = obj3.writeValueAsString(this.expenseServices.viewResolvedReimbursement());
+			 final String JSON3 = obj3.writeValueAsString(this.expenseServices.viewResolvedReimbursement(EMPLOYEEID));
 			 response.getWriter().write(JSON3);
+			 response.setStatus(200);
 			 break;
 			 
 		 case "/dispatcher/manager/pendingrequest/view":
@@ -106,9 +103,19 @@ public class RequestHelper {
 			 final String JSON4 = obj4.writeValueAsString(this.managerServices.viewPendingRequest(MANAGERID));
 			 System.out.println(JSON4);
 			 response.getWriter().write(JSON4);
-			 response.getWriter().write("Welcome to home page");
+			 response.setStatus(200);
 			 break;
 			 
+			 
+		 case "/dispatcher/manager/resolvedrequest/authorized/view":
+			 // CONFIGURE BACKENED TO GET MANAAGER ID AFTER SUCCESSFUL LOGIN
+			 final int MANAGERID1 = 3;
+			 ObjectMapper obj5 = new ObjectMapper();
+			 final String JSON5 = obj5.writeValueAsString(this.managerServices.viewResolvedEmployeesRequestAuthorization(MANAGERID1));
+			 System.out.println(JSON5);
+			 response.getWriter().write(JSON5);
+			 response.setStatus(200);
+			 break;
 		 
 			 
 		 case "/dispatcher/contact":
@@ -153,14 +160,18 @@ public class RequestHelper {
 				case "/dispatcher/login":
 					final String USEREMAIL = request.getParameter("email");
 					final String USERPASSWORD = request.getParameter("password");
-					
-					if(this.expenseServices.isValidUser(USEREMAIL, USERPASSWORD)) {
+					final int EMPLOYEEID = Integer.parseInt(request.getParameter("employeeId"));
+					System.out.println(USEREMAIL);
+					System.out.println(USERPASSWORD);
+					if(this.expenseServices.isValidUser(USEREMAIL, USERPASSWORD, EMPLOYEEID)) {
+						// let us grant the client a session (we won't be truly restful because we are storing some client data on the server
+						HttpSession session = request.getSession();
+						session.setAttribute("employeeId", EMPLOYEEID);
+						
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/home.html");
 						dispatcher.forward(request, response);
 						
-						// let us grant the client a session (we won't be truly restful because we are storing some client data on the server
-			//			HttpSession session = request.getSession();
-			//			session.setAttribute("userEmail", USEREMAIL);
+						
 						
 						// when the client session ends, all the client stored attributes is deleted
 					} else {
@@ -179,11 +190,11 @@ public class RequestHelper {
 				case "/dispatcher/manager/login":
 					final String MANAGERUSEREMAIL = request.getParameter("email");
 					final String MANAGERUSERPASSWORD = request.getParameter("password");
-					
-					if(this.managerServices.isValidUser(MANAGERUSEREMAIL, MANAGERUSERPASSWORD)) {
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/home.html");
+					final int MANAGERID = Integer.parseInt(request.getParameter("employeeId"));
+					if(this.managerServices.isValidUser(MANAGERUSEREMAIL, MANAGERUSERPASSWORD, MANAGERID)) {
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/homeManager.html");
 						dispatcher.forward(request, response);
-						
+						response.setStatus(200);
 //						HttpSession session = request.getSession();
 //						session.setAttribute("email",USEREMAIL);
 						
@@ -195,26 +206,24 @@ public class RequestHelper {
 					break;
 			
 			case "/dispatcher/expense/new":
-				final String EXPENSEIMAGE = request.getParameter("image");
+				final String IMAGE = request.getParameter("image");
 				final long AMOUNT = Long.parseLong(request.getParameter("amount"));
 				final String DETAILS = request.getParameter("details");
 				final String STATUS = request.getParameter("status");
-				final int EMPLOYEEID = Integer.parseInt(request.getParameter("employeeId"));
-			//	final LocalDate SUBMISSIONDATE = LocalDate.parse("2021-2-2");
-				final String COMMENTS = request.getParameter("comments");
-				final String AUTHORIZEDBY = request.getParameter("authorizedBy");
-						
-				Expense newExpense = new Expense(20, 2, "path/url", STATUS, Date.valueOf("2021-01-01"), DETAILS, "in review", AMOUNT, AUTHORIZEDBY);
+				final int EMPLOYEEID1 = Integer.parseInt(request.getParameter("employeeId"));
+				final int EXPENSEID = Integer.parseInt(request.getParameter("expenseId"));
+				Expense newExpense = new Expense(EXPENSEID, EMPLOYEEID1, IMAGE, STATUS, DETAILS, AMOUNT);
 				this.expenseServices.submitReimbursementRequest(newExpense);
 				response.getWriter().write("Submitted Successfully");
+				response.setStatus(200);
 				break;
 				
 			case "/dispatcher/manager/singlerequest/view":
 				 // CONFIGURE BACKENED TO GET MANAAGER ID AFTER SUCCESSFUL LOGIN
 				 final int MANAGERID1 = 3;
-				 final int EMPLOYEEID1 = Integer.parseInt(request.getParameter("employeeId1"));
+				 final int EMPLOYEEID2 = Integer.parseInt(request.getParameter("employeeId1"));
 				 ObjectMapper obj5 = new ObjectMapper();
-				 final String JSON5 = obj5.writeValueAsString(this.managerServices.viewRequestFromManagedEmployee(MANAGERID1, EMPLOYEEID1));
+				 final String JSON5 = obj5.writeValueAsString(this.managerServices.viewRequestFromManagedEmployee(MANAGERID1, EMPLOYEEID2));
 				 System.out.println(JSON5);
 				 response.getWriter().write(JSON5);
 				 response.setStatus(200);
@@ -222,19 +231,20 @@ public class RequestHelper {
 				
 			case "/dispatcher/employee/maritalstatus":
 				final String MARITALSTATUS = request.getParameter("marital_status");
-				this.expenseServices.updateMaritalStatus(MARITALSTATUS);
+				final int EMPLOYEEID3 = Integer.parseInt(request.getParameter("employeeId3"));
+				this.expenseServices.updateMaritalStatus(MARITALSTATUS, EMPLOYEEID3);
 				response.getWriter().write("Marital Status successfully changed to " + MARITALSTATUS);
-				
+				response.setStatus(200);
 				break;
 				
 			case "/dispatcher/manager/request/decision":
 				 // CONFIGURE BACKENED TO GET MANAAGER ID AFTER SUCCESSFUL LOGIN
-				final int MANAGERID2 = 3;
-				final int EXPENSEID = Integer.parseInt("expenseid");
+				final int EMPLOYEEID4 = Integer.parseInt(request.getParameter("employeeId4"));
+				final int EXPENSEID1 = Integer.parseInt("expenseid");
 				final String DECISION = request.getParameter("decision");
-				this.managerServices.approveDenyRequest(MANAGERID2, DECISION, EXPENSEID);
+				this.managerServices.approveDenyRequest(EXPENSEID1, DECISION, EMPLOYEEID4);
 				response.getWriter().write("Marital Status successfully changed to " + DECISION);
-				
+				response.setStatus(200);
 				break;
 				
 			

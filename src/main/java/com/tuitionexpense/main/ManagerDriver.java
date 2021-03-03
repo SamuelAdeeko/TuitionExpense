@@ -15,8 +15,9 @@ public class ManagerDriver {
 	//	System.out.println(managerService.viewAllExpenseRequest(3));
 	//	System.out.println(managerService.viewEmployeePendingRequest(2));
 	//	System.out.println(managerService.viewRequestFromManagedEmployee(3, 2));
-		managerService.approveDenyRequest(102, "denied", 2);
+	//	managerService.approveDenyRequest(102, "approved", 2);
 	//	System.out.println(managerService.getManagerLastName(2));
+	//	System.out.println(managerService.viewResolvedEmployeesRequestAuthorization(3));
 	}
 
 }

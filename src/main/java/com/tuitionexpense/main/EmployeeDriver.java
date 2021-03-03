@@ -48,7 +48,7 @@ public class EmployeeDriver {
 		// printing a list of all employees to the console
 	//	System.out.println(expenseRepo.viewAllEmployee());
 		
-	//	System.out.println(expenseRepo.viewEmployeePendingExpense(1));
+		System.out.println(expenseRepo.viewEmployeePendingExpense(1));
 	//	System.out.println(expenseRepo.viewAllEmployee());
 	//	System.out.println(expenseRepo.viewResolvedReimbursement());
 	//	expenseRepo.updateMaritalStatus("married");

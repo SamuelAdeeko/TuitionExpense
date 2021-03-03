@@ -1,4 +1,4 @@
-{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       24-Feb-2021 Wednesday PST 21:40:49
+8{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       24-Feb-2021 Wednesday PST 21:40:49
 {INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       24-Feb-2021 Wednesday PST 21:40:50
 {WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       24-Feb-2021 Wednesday PST 21:40:50
 {INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       24-Feb-2021 Wednesday PST 21:40:50
@@ -3205,3 +3205,100 @@ Caused by: java.lang.IllegalArgumentException: Can not set int field com.tuition
 {INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       01-Mar-2021 Monday PST 03:33:33
 {INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       01-Mar-2021 Monday PST 03:33:34
 {INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@67403656] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       01-Mar-2021 Monday PST 03:33:42
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       01-Mar-2021 Monday PST 07:19:44
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       01-Mar-2021 Monday PST 07:19:45
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       01-Mar-2021 Monday PST 07:19:46
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       01-Mar-2021 Monday PST 07:19:46
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       01-Mar-2021 Monday PST 07:19:46
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       01-Mar-2021 Monday PST 07:19:46
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       01-Mar-2021 Monday PST 07:19:46
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       01-Mar-2021 Monday PST 07:19:47
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@746cd757] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       01-Mar-2021 Monday PST 07:19:55
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       01-Mar-2021 Monday PST 07:57:39
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       01-Mar-2021 Monday PST 07:57:40
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       01-Mar-2021 Monday PST 07:57:40
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       01-Mar-2021 Monday PST 07:57:40
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       01-Mar-2021 Monday PST 07:57:40
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       01-Mar-2021 Monday PST 07:57:40
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       01-Mar-2021 Monday PST 07:57:40
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       01-Mar-2021 Monday PST 07:57:41
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@67403656] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       01-Mar-2021 Monday PST 07:57:50
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       01-Mar-2021 Monday PST 08:09:48
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       01-Mar-2021 Monday PST 08:09:49
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       01-Mar-2021 Monday PST 08:09:49
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       01-Mar-2021 Monday PST 08:09:49
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       01-Mar-2021 Monday PST 08:09:49
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       01-Mar-2021 Monday PST 08:09:49
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       01-Mar-2021 Monday PST 08:09:49
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       01-Mar-2021 Monday PST 08:09:50
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@746cd757] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       01-Mar-2021 Monday PST 08:09:58
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       01-Mar-2021 Monday PST 09:49:08
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       01-Mar-2021 Monday PST 09:49:09
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       01-Mar-2021 Monday PST 09:49:09
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       01-Mar-2021 Monday PST 09:49:09
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       01-Mar-2021 Monday PST 09:49:09
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       01-Mar-2021 Monday PST 09:49:09
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       01-Mar-2021 Monday PST 09:49:09
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       01-Mar-2021 Monday PST 09:49:10
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@746cd757] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       01-Mar-2021 Monday PST 09:49:18
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       02-Mar-2021 Tuesday PST 15:00:43
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       02-Mar-2021 Tuesday PST 15:00:44
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       02-Mar-2021 Tuesday PST 15:00:44
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       02-Mar-2021 Tuesday PST 15:00:44
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       02-Mar-2021 Tuesday PST 15:00:44
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       02-Mar-2021 Tuesday PST 15:00:44
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       02-Mar-2021 Tuesday PST 15:00:44
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       02-Mar-2021 Tuesday PST 15:00:45
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4349754] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       02-Mar-2021 Tuesday PST 15:00:53
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       02-Mar-2021 Tuesday PST 15:31:51
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       02-Mar-2021 Tuesday PST 15:31:52
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       02-Mar-2021 Tuesday PST 15:31:52
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       02-Mar-2021 Tuesday PST 15:31:52
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       02-Mar-2021 Tuesday PST 15:31:52
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       02-Mar-2021 Tuesday PST 15:31:52
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       02-Mar-2021 Tuesday PST 15:31:52
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       02-Mar-2021 Tuesday PST 15:31:53
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6a2eea2a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       02-Mar-2021 Tuesday PST 15:32:01
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       02-Mar-2021 Tuesday PST 23:30:51
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       02-Mar-2021 Tuesday PST 23:30:52
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       02-Mar-2021 Tuesday PST 23:30:52
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       02-Mar-2021 Tuesday PST 23:30:52
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       02-Mar-2021 Tuesday PST 23:30:52
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       02-Mar-2021 Tuesday PST 23:30:52
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       02-Mar-2021 Tuesday PST 23:30:52
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       02-Mar-2021 Tuesday PST 23:30:53
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       02-Mar-2021 Tuesday PST 23:33:48
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       02-Mar-2021 Tuesday PST 23:33:49
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       02-Mar-2021 Tuesday PST 23:33:49
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       02-Mar-2021 Tuesday PST 23:33:49
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       02-Mar-2021 Tuesday PST 23:33:49
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       02-Mar-2021 Tuesday PST 23:33:49
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       02-Mar-2021 Tuesday PST 23:33:49
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       02-Mar-2021 Tuesday PST 23:33:50
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3ac04654] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       02-Mar-2021 Tuesday PST 23:33:58
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       02-Mar-2021 Tuesday PST 23:35:18
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       02-Mar-2021 Tuesday PST 23:35:19
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       02-Mar-2021 Tuesday PST 23:35:19
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       02-Mar-2021 Tuesday PST 23:35:19
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       02-Mar-2021 Tuesday PST 23:35:19
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       02-Mar-2021 Tuesday PST 23:35:19
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       02-Mar-2021 Tuesday PST 23:35:19
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       02-Mar-2021 Tuesday PST 23:35:20
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       02-Mar-2021 Tuesday PST 23:35:32
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       02-Mar-2021 Tuesday PST 23:35:33
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       02-Mar-2021 Tuesday PST 23:35:33
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       02-Mar-2021 Tuesday PST 23:35:33
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       02-Mar-2021 Tuesday PST 23:35:33
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       02-Mar-2021 Tuesday PST 23:35:33
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       02-Mar-2021 Tuesday PST 23:35:33
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       02-Mar-2021 Tuesday PST 23:35:34
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3ac04654] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       02-Mar-2021 Tuesday PST 23:35:42
+{INFO}  org.hibernate.Version   HHH000412: Hibernate ORM core version 5.4.28.Final       02-Mar-2021 Tuesday PST 23:36:05
+{INFO}  org.hibernate.annotations.common.Version   HCANN000001: Hibernate Commons Annotations {5.1.2.Final}       02-Mar-2021 Tuesday PST 23:36:06
+{WARN}  org.hibernate.orm.connections.pooling   HHH10001002: Using Hibernate built-in connection pool (not for production use!)       02-Mar-2021 Tuesday PST 23:36:06
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://my8weeksinstance.cjfjnd6bxxdf.us-west-1.rds.amazonaws.com:5432/postgres]       02-Mar-2021 Tuesday PST 23:36:06
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001001: Connection properties: {user=postgres, password=****}       02-Mar-2021 Tuesday PST 23:36:06
+{INFO}  org.hibernate.orm.connections.pooling   HHH10001003: Autocommit mode: false       02-Mar-2021 Tuesday PST 23:36:06
+{INFO}  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl   HHH000115: Hibernate connection pool size: 5 (min=1)       02-Mar-2021 Tuesday PST 23:36:06
+{INFO}  org.hibernate.dialect.Dialect   HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect       02-Mar-2021 Tuesday PST 23:36:07
+{INFO}  org.hibernate.orm.connections.access   HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3ac04654] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.       02-Mar-2021 Tuesday PST 23:36:16

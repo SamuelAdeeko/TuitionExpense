@@ -3,7 +3,6 @@ package com.tuitionexpense.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -14,7 +13,10 @@ import com.tuitionexpense.util.HibernateSessionFactory;
 
 public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 
-
+	public ExpenseWebsiteRepositoryImpl() {
+		System.out.println("in repo impl");
+	}
+	
 	@Override
 	public List<Employees> viewAllEmployees() {
 		List<Employees> employee = new ArrayList<>();
@@ -27,7 +29,7 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 			employee = s.createQuery("FROM Employees", Employees.class).getResultList();
 		
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -54,7 +56,7 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 			// this method persist the request, i.e creates a new record
 			s.save(request);
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -84,7 +86,7 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 			expense = s.createQuery("FROM Expense WHERE employee_id = :employeeId AND status = 'pending'", Expense.class).setParameter("employeeId", employeeId).getResultList();
 		
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -105,7 +107,7 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 			tx = s.beginTransaction();
 			resolvedExpense = s.createQuery("FROM Expense WHERE employee_id = :employeeId AND status = 'approved'", Expense.class).setParameter("employeeId", employeeId).getResultList();
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -128,7 +130,7 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 			tx = s.beginTransaction();
 			employee = s.get(Employees.class, id);
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -152,7 +154,7 @@ public class ExpenseWebsiteRepositoryImpl implements ExpenseWebsiteRepository {
 			employee.setMaritalStatus(maritalStatus);
 			s.update(employee);
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 			

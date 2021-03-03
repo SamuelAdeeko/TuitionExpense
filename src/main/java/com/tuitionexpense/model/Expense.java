@@ -51,6 +51,20 @@ public class Expense {
 		super();
 		
 	}
+	
+	
+
+	public Expense(int expenseId, int employeeId, String expenseImage, String status, String details, long amount) {
+		super();
+		this.expenseId = expenseId;
+		EmployeeId = employeeId;
+		this.expenseImage = expenseImage;
+		this.status = status;
+		this.details = details;
+		this.amount = amount;
+	}
+
+
 
 	public Expense(int expenseId, int employeeId, String expenseImage, String status, Date submissionDate,
 			String details, String comments, long amount, String authorizedBy) {

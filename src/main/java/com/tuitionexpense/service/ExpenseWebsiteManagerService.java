@@ -1,6 +1,6 @@
 package com.tuitionexpense.service;
 
-import java.lang.reflect.InvocationTargetException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,39 +11,41 @@ import com.tuitionexpense.repository.ExpenseManagerWebsiteRepository;
 import com.tuitionexpense.repository.ExpenseManagerWebsiteRepositoryImpl;
 import com.tuitionexpense.repository.ExpenseWebsiteRepositoryImpl;
 
-import javassist.expr.NewArray;
+
 
 public class ExpenseWebsiteManagerService {
 
 	private ExpenseManagerWebsiteRepository managerRepo;
-	private int employeeId;
 	
-	
-	public int getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
-	}
+	ExpenseWebsiteRepositoryImpl employeeDao ;
 
 	public ExpenseWebsiteManagerService(){
+		System.out.println("service");
+		this.employeeDao = new ExpenseWebsiteRepositoryImpl();
 		this.managerRepo = new ExpenseManagerWebsiteRepositoryImpl();
 	}
 	
 	
+	public boolean checkManager(int employeeId){
+		List<Manager> manager = new ArrayList<>();
+		manager = managerRepo.checkForManager(employeeId);
+		for(Manager i: manager) {
+			if(i.getEmployeeId() == employeeId && i.getDesignation().equals("manager") || i.getDesignation().equals("g.manager")) {
+			System.out.println(manager);
+				return true;
+			}
+		}
+		return false;
+	}
 	
-	ExpenseWebsiteRepositoryImpl employeeDao = new ExpenseWebsiteRepositoryImpl();
 	
-	public boolean isValidUser(String email, String password) {
+	public boolean isValidUser(String email, String password, int employeeId) {
 		List<Employees> employee = employeeDao.viewAllEmployees();
 		
 		for(Employees i: employee) {
-			if(i.getEmail().equals(email) && i.getPassword().equals(password)) {
-				int id = i.getEmployeeId();
-				setEmployeeId(id);
-				System.out.println(id);
-				if(checkManager() != null) {
+			if(i.getEmail().equals(email) && i.getPassword().equals(password) && i.getEmployeeId() == employeeId) {
+				
+				if(checkManager(employeeId) == true) {
 					return true;
 				}
 			}
@@ -52,17 +54,7 @@ public class ExpenseWebsiteManagerService {
 		return false;
 	}
 	
-	public List<Manager> checkManager(){
-		List<Manager> manager = new ArrayList<>();
-		manager = managerRepo.checkForManager(getEmployeeId());
-		for(Manager i: manager) {
-			if(i.getEmployeeId() == getEmployeeId() && i.getDesignation().equals("manager") || i.getDesignation().equals("general manager")) {
-			System.out.println(manager);
-				return manager;
-			}
-		}
-		return null;
-	}
+	
 	
 	public List<Employees> allEmployeesManaged(int managerId) {
 		List<Employees> allEmployeesManaged = new ArrayList<>();
@@ -107,8 +99,28 @@ public class ExpenseWebsiteManagerService {
 		return empExpense;
 	}
 	
-	public void approveDenyRequest(int expenseId, String decision, int employeeId2){
-		String name1 = getManagerLastName(employeeId2);
+	// view all approved request and the manager that authorized it.
+	
+	public List<Expense> viewResolvedEmployeesRequestAuthorization(int managerId) {
+		// WRITE A METHOD TO CHECK IF MANAGER ID IS VALID OR IF MANAGER HAS A SESSION
+		List <Expense> resolvedExpense = new ArrayList<>();
+		
+		//Get an ArrayList of all the expense request
+		resolvedExpense = this.managerRepo.viewAllExpenseRequest(managerId);
+		List<Expense> empExpense = new ArrayList<>();
+		
+		// For each to get status = approved in the Expense table
+		for(Expense i : resolvedExpense) {
+			if(i.getStatus().equals("approved")) {
+				empExpense.add(i);
+			}
+		}
+		
+		return empExpense;
+	}
+	
+	public void approveDenyRequest(int expenseId, String decision, int employeeId){
+		String name1 = getManagerLastName(employeeId);
 		// Configure to make sure it is an employee they manage
 		this.managerRepo.approveDenyRequest(expenseId, decision, name1);
 	}

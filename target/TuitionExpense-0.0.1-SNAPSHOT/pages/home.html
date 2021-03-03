@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome home!</title>
+<link rel="stylesheet" href="../css/myStyleSheet.css"></link>
+</head>
+</head>
+<body>
+
+
+ <div class="navbar">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <div class="dropdown">
+    <button class="dropbtn">Logout
+      <i class="fa fa-caret-down"></i>
+    </button>
+  </div>
+</div> 
+<h1>Welcome back, user!</h1>
+<div>
+
+<h4> Fill Out And Submit Tuition Expense Reimbursement Form.</h4>
+</div>
+
+<div id = "formDiv">
+<form action="http://localhost:8080/TuitionExpense/dispatcher/expense/new" method ="post">
+	
+	
+	<div class = "container">
+		<label for = "amount">Amount:</label>
+		<input type = "number" placeholder = "Enter amount" name = "amount" required>
+	
+		<label for="details">Details:</label>
+		<input type="text" id="details" name="details">
+	  
+	    <label for="status">Status:</label>
+	    <input type="text" id="status" name="status">
+
+	
+		<label for = "expenseId">ExpenseId:</label>
+		<input type ="number" id="expenseId" name = "expenseId"  >
+		
+		<label for = "employeeId">EmployeeId:</label>
+		<input type ="number" id="employeeId" name = "employeeId"> 
+		
+		 <label for="image">Image Test:</label>
+		<input type="text" id="image" name="image">
+	<!-- 	
+		<input type="file" id="myFile" name="filename">
+  		  <input type="submit"> 
+	 -->	
+		<button type= "submit">Submit</button>
+		
+	</div>
+	
+  </form>
+</div>
+
+<div>
+	<h4> Update relationship status</h4>
+</div>
+
+<div id= "formUpStat">
+	<form action="/TuitionExpense/dispatcher/employee/maritalstatus" method ="post">
+	
+	  <input type="radio" id="married" name="married" value="married">
+	  <label for="male">Married</label><br>
+	  
+	  <input type="radio" id="single" name="single" value="single">
+	  <label for="single">Single</label><br>
+	<!--   
+	  <input type="radio" id="other" name="gender" value="other">
+	  <label for="other">Other</label> 
+	 --> 
+	  <label for = "employeeId">EmployeeId:</label>
+	  <input type ="number" id="employeeId1" name = "employeeId">
+		
+	 <input type="submit" >
+	 
+	</form>
+</div>
+// get employee pending expense by id
+<div id = "pending">
+	
+	  <label for = "employeeId" >EmployeeId:</label>
+	  <input type ="number" id="emp" name = "employeeId">
+	  
+		<input type="submit" onclick="viewPendingExpense()" > 
+	  
+</div>
+
+<div>
+	
+	
+<table id="myTable">
+  <tr>
+    <th>Amount</th>
+    <th>Authorized by</th>
+    <th>Comments</th>
+    <th>Details</th>
+    <th>Expense Image</th>
+    <th>Status</th>
+    <th>Submission Date</th>
+    <th>Expense Id</th>
+    <th>Employee Id</th>
+  </tr>
+  </table>
+</div>
+ // end
+<div>
+    <h4>Get Employee Information</h4>
+</div>
+
+<div id = "empinfo">
+	
+	  <label for = "employeeInfo" >Employee Info:</label>
+	  <input type ="number" id="empinf" name = "employeeInfo">
+	  
+		<input type="submit" onclick=viewEmployeeInfo() > 
+	  
+</div>
+
+<div>
+	
+	
+<table id="myTableInfo">
+  <tr>
+    <th>EmployeeId</th>
+    <th>Dob</th>
+    <th>Email</th>
+    <th>FirstName</th>
+    <th>Lastname</th>
+    <th>maritalStatus</th>
+    <th>Password</th>
+    <th>position</th>
+    <th>Department Id</th>
+    <th>Manager Id</th>
+  </tr>
+  </table>
+</div>
+
+// end
+
+<script src ="../scripts/home.js"></script>
+</body>
+</html>

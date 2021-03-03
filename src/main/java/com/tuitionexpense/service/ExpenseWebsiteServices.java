@@ -3,8 +3,6 @@ package com.tuitionexpense.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
-
 import com.tuitionexpense.model.Employees;
 import com.tuitionexpense.model.Expense;
 import com.tuitionexpense.repository.ExpenseWebsiteRepository;
@@ -13,25 +11,7 @@ import com.tuitionexpense.repository.ExpenseWebsiteRepositoryImpl;
 public class ExpenseWebsiteServices {
 	
 	private ExpenseWebsiteRepository expenseWebsiteRepository;
-	private int employeeId ;
 	
-	
-//	public class Example {
-//	 
-//	 private int number;   how can i assign a value to the class variable?
-//	 
-//	 public void sample(){
-//	 	this.number = 1;     // this doesn't work
-//	  }
-
-	public int getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
-	}
-
 	public ExpenseWebsiteServices() {
 		expenseWebsiteRepository = new ExpenseWebsiteRepositoryImpl();
 		}
@@ -42,14 +22,12 @@ public class ExpenseWebsiteServices {
 	
 	
 	
-	public boolean isValidUser(String email, String password) {
+	public boolean isValidUser(String email, String password, int employeeId) {
 		List<Employees> employee = this.expenseWebsiteRepository.viewAllEmployees();
 		
 		for(Employees i: employee) {
-			if(i.getEmail().equals(email) && i.getPassword().equals(password)) {
-				int id = i.getEmployeeId();
-				setEmployeeId(id);
-				System.out.println(id);
+			if(i.getEmail().equals(email) && i.getPassword().equals(password) && i.getEmployeeId() == employeeId) {
+	
 				return true;
 			}
 		}
@@ -74,26 +52,26 @@ public class ExpenseWebsiteServices {
 		this.expenseWebsiteRepository.createEmployee(employee);
 	}
 	
-	public Employees viewPersonalInformation() {
+	public Employees viewPersonalInformation(int employeeId) {
 		
-		return this.expenseWebsiteRepository.viewPersonalInformation(getEmployeeId());
+		return this.expenseWebsiteRepository.viewPersonalInformation(employeeId);
 	}
 	
-	public List<Expense> viewEmployeePendingExpense() {
+	public List<Expense> viewEmployeePendingExpense(int employeeId) {
 		List<Expense> expense = new ArrayList<>();
-		expense = this.expenseWebsiteRepository.viewPendingReimbursement(getEmployeeId());
+		expense = this.expenseWebsiteRepository.viewPendingReimbursement(employeeId);
 
 	return expense;
 	}
 	
-	public List<Expense> viewResolvedReimbursement(){
+	public List<Expense> viewResolvedReimbursement(int employeeId){
 		List<Expense> resolvedExpense = new ArrayList<>();
-		resolvedExpense = this.expenseWebsiteRepository.viewResolvedReimbursement(getEmployeeId());
+		resolvedExpense = this.expenseWebsiteRepository.viewResolvedReimbursement(employeeId);
 		
 		return resolvedExpense;
 	}
 	
-	public void updateMaritalStatus(String maritalStatus) {
-		this.expenseWebsiteRepository.updatePersonalInformation(getEmployeeId(), maritalStatus);
+	public void updateMaritalStatus(String maritalStatus, int employeeId) {
+		this.expenseWebsiteRepository.updatePersonalInformation(employeeId, maritalStatus);
 	}
 }

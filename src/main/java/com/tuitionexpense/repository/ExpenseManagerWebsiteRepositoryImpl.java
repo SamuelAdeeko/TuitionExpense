@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.hibernate.Transaction; 
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import com.tuitionexpense.model.Employees;
@@ -17,6 +16,11 @@ import com.tuitionexpense.util.HibernateSessionFactory;
 
 public class ExpenseManagerWebsiteRepositoryImpl implements ExpenseManagerWebsiteRepository {
 
+	
+	public ExpenseManagerWebsiteRepositoryImpl() {
+		System.out.println("manager impl");
+	}
+	
 	@Override
 	public int managerLogin(String email, String password) {
 		// TODO Auto-generated method stub
@@ -40,51 +44,15 @@ public class ExpenseManagerWebsiteRepositoryImpl implements ExpenseManagerWebsit
 			expenseUpdate.setAuthorizedBy(signature);
 			s.update(expenseUpdate);
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
 			s.close();
 		}
-		
-		
-//		@Override
-//		public int approveRequest(int requestId) throws BusinessException {
-//			Session s = null;
-//			Transaction t = null;
-//			int success = 0;
-//			
-//			log.info("manager viewpending DAO");
-//			
-//			try {
-//			s = HibernateSessionFactory.getSession();
-//			t = s.beginTransaction();
-//			
-//			Reimbursement reimbursement = s.load(Reimbursement.class, requestId);
-//			//reimbursement.setRequestId(requestId);
-//			reimbursement.setStatus("approved");
-//			success = 1;
-//			s.update(reimbursement);
-//			
-//			//int hqlUpdate = s.createQuery("UPDATE Reimbursement R SET R.status = 'approved' WHERE requestId = :requestId").setParameter("requestId", requestId).executeUpdate();
-//					
-//			
-//			t.commit();
-//		
-//			}catch(HibernateException e) {
-//				success = 0;
-//				e.printStackTrace();
-//				t.rollback();
-//			}finally {
-//				if(s != null) {
-//					s.close();
-//				}
-//			}
-//			return success;
-//		}
-		
 	}
-
+		
+		
 	// View employee pending request by manager
 	@Override
 	public List<Expense> viewPendingRequest(int managerId) {
@@ -107,7 +75,7 @@ public class ExpenseManagerWebsiteRepositoryImpl implements ExpenseManagerWebsit
 				pendingRequest = s.createQuery("FROM Expense WHERE employee_id = :employeeId AND status = 'pending'", Expense.class).setParameter("employeeId", counter).getResultList();
 				newPend.addAll(pendingRequest);
 				tx.commit();
-			} catch (HibernateException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 				tx.rollback();
 			}finally {
@@ -131,7 +99,7 @@ public class ExpenseManagerWebsiteRepositoryImpl implements ExpenseManagerWebsit
 			allExpenseRequest = s.createQuery("FROM Expense", Expense.class).getResultList();
 		
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -173,7 +141,7 @@ public class ExpenseManagerWebsiteRepositoryImpl implements ExpenseManagerWebsit
 			tx = s.beginTransaction();
 			requestView = s.get(Expense.class, employeeId);
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -200,7 +168,7 @@ public class ExpenseManagerWebsiteRepositoryImpl implements ExpenseManagerWebsit
 			tx = s.beginTransaction();
 			manager = s.createQuery("FROM Manager WHERE employee_id = :employeeId AND designation = 'manager'", Manager.class).setParameter("employeeId", employeeId).getResultList();
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -222,7 +190,7 @@ public class ExpenseManagerWebsiteRepositoryImpl implements ExpenseManagerWebsit
 			tx = s.beginTransaction();
 			allEmployeesManaged = s.createQuery("FROM Employees WHERE manager_id = :managerId", Employees.class).setParameter("managerId", managerId).getResultList();
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		}finally {
